@@ -8,10 +8,9 @@
 
 body {
   font-family: 'Poppins', sans-serif;
-  overflow-x: hidden;
   color: #fff;
-  background: radial-gradient(circle at top left, #141E30, #243B55);
-  position: relative;
+  overflow-x: hidden;
+  background: radial-gradient(circle at top left, #0b132b, #1c2541, #3a506b);
 }
 
 canvas#bg {
@@ -25,23 +24,23 @@ canvas#bg {
 
 header {
   text-align: center;
-  padding: 60px 20px 30px;
-  backdrop-filter: blur(12px);
+  padding: 60px 20px 20px;
+  backdrop-filter: blur(10px);
 }
 
 header h1 {
   font-size: 3rem;
-  background: linear-gradient(90deg, #00F5A0, #00D9F5);
+  background: linear-gradient(90deg, #00f5a0, #00d9f5);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
 header p {
-  font-size: 1.2rem;
-  color: #d1d1d1;
+  color: #ddd;
+  font-size: 1.1rem;
 }
 
-#video-gallery {
+#videos {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
   gap: 24px;
@@ -51,17 +50,17 @@ header p {
 }
 
 .video-card {
-  position: relative;
-  background: rgba(255, 255, 255, 0.1);
-  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 15px;
   overflow: hidden;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
-  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.4);
+  transition: all 0.4s ease;
+  backdrop-filter: blur(10px);
 }
 
 .video-card:hover {
-  transform: translateY(-10px) scale(1.03);
-  box-shadow: 0 10px 30px rgba(0, 255, 200, 0.4);
+  transform: translateY(-8px) scale(1.03);
+  box-shadow: 0 8px 30px rgba(0, 255, 200, 0.3);
 }
 
 .video-card iframe {
@@ -71,17 +70,16 @@ header p {
 }
 
 .video-card h3 {
-  padding: 12px;
-  font-size: 1rem;
   text-align: center;
+  font-size: 1rem;
+  padding: 10px;
   color: #fff;
 }
 
 footer {
   text-align: center;
-  padding: 30px;
-  background: rgba(0, 0, 0, 0.3);
-  backdrop-filter: blur(10px);
-  font-size: 0.9rem;
+  padding: 25px;
+  background: rgba(0, 0, 0, 0.2);
   color: #ccc;
+  font-size: 0.9rem;
 }
