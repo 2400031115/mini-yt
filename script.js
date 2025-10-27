@@ -1,37 +1,48 @@
-// 🔥 List of popular/trending YouTube video IDs
-const videoIds = [
-  "Zi_XLOBDo_Y", // Example: Alan Walker - Faded
-  "RgKAFK5djSk", // Wiz Khalifa - See You Again
-  "3JZ_D3ELwOQ", // Charlie Puth - Attention
-  "kXYiU_JCYtU", // Linkin Park - Numb
-  "JGwWNGJdvx8", // Ed Sheeran - Shape of You
-  "tAGnKpE4NCI", // Metallica - Nothing Else Matters
-  "hT_nvWreIhg", // OneRepublic - Counting Stars
-  "fLexgOxsZu0", // Imagine Dragons - Thunder
-  "UceaB4D0jpo", // Marshmello - Alone
-  "i0p1bmr0EmE"  // Justin Bieber - Peaches
+// Simple floating 3D bubbles background
+const canvas = document.getElementById('bg');
+const ctx = canvas.getContext('2d');
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+let particles = Array(100).fill().map(() => ({
+  x: Math.random() * canvas.width,
+  y: Math.random() * canvas.height,
+  r: Math.random() * 3,
+  dx: (Math.random() - 0.5) * 0.7,
+  dy: (Math.random() - 0.5) * 0.7
+}));
+
+function animate() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  particles.forEach(p => {
+    ctx.beginPath();
+    ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+    ctx.fillStyle = 'rgba(0,255,200,0.5)';
+    ctx.fill();
+    p.x += p.dx;
+    p.y += p.dy;
+    if (p.x < 0 || p.x > canvas.width) p.dx *= -1;
+    if (p.y < 0 || p.y > canvas.height) p.dy *= -1;
+  });
+  requestAnimationFrame(animate);
+}
+animate();
+
+// Embed your YouTube videos (replace links when needed)
+const videos = [
+  'https://www.youtube.com/embed/dQw4w9WgXcQ', // Example video
+  'https://www.youtube.com/embed/8ZtInClXe1Q',
+  'https://www.youtube.com/embed/2Vv-BfVoq4g'
 ];
 
-const videoGrid = document.getElementById("video-grid");
-
-// 🧠 Function to shuffle and display videos
-function loadVideos() {
-  videoGrid.innerHTML = ""; // clear previous
-
-  // Pick 6 random videos
-  const shuffled = videoIds.sort(() => 0.5 - Math.random());
-  const selected = shuffled.slice(0, 6);
-
-  selected.forEach(id => {
-    const iframe = document.createElement("iframe");
-    iframe.src = `https://www.youtube.com/embed/${id}`;
-    iframe.allow = "accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture";
-    videoGrid.appendChild(iframe);
-  });
-}
-
-// Initial load
-loadVideos();
-
-// 🔄 Auto-refresh every 30 seconds
-setInterval(loadVideos, 30000);
+// Add videos dynamically
+const gallery = document.getElementById('video-gallery');
+videos.forEach(link => {
+  const card = document.createElement('div');
+  card.className = 'video-card';
+  card.innerHTML = `
+    <iframe src="${link}" allowfullscreen></iframe>
+    <h3>Watch on RAMIkkada 🔥</h3>
+  `;
+  gallery.appendChild(card);
+});
